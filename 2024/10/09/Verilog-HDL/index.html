@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Verilog HDL硬件描述语言 应用：  ​	专用集成电路（ASIC），就是具有专门用途和特殊功能的独立集成电路器件。Verilog 作为硬件描述语言，主要用来生成专用集成电路。  流程： 需求分析   工作人员需要对用户提出的功能要求进行分析理解，做出电路系统的整体规划，形成详细的技术指标，确定初步方案。例如，要设计一个电子屏，需要考虑供电方式、工作频率、产品体积、成本、功耗等，电路实现采用">
+  <meta name="description" content="Verilog HDL硬件描述语言应用：​	专用集成电路（ASIC），就是具有专门用途和特殊功能的独立集成电路器件。Verilog 作为硬件描述语言，主要用来生成专用集成电路。  流程： 需求分析  工作人员需要对用户提出的功能要求进行分析理解，做出电路系统的整体规划，形成详细的技术指标，确定初步方案。例如，要设计一个电子屏，需要考虑供电方式、工作频率、产品体积、成本、功耗等，电路实现采用 ASI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/2024/10/09/Verilog-HDL/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Verilog HDL硬件描述语言 应用：  ​	专用集成电路（ASIC），就是具有专门用途和特殊功能的独立集成电路器件。Verilog 作为硬件描述语言，主要用来生成专用集成电路。  流程： 需求分析   工作人员需要对用户提出的功能要求进行分析理解，做出电路系统的整体规划，形成详细的技术指标，确定初步方案。例如，要设计一个电子屏，需要考虑供电方式、工作频率、产品体积、成本、功耗等，电路实现采用">
+<meta property="og:description" content="Verilog HDL硬件描述语言应用：​	专用集成电路（ASIC），就是具有专门用途和特殊功能的独立集成电路器件。Verilog 作为硬件描述语言，主要用来生成专用集成电路。  流程： 需求分析  工作人员需要对用户提出的功能要求进行分析理解，做出电路系统的整体规划，形成详细的技术指标，确定初步方案。例如，要设计一个电子屏，需要考虑供电方式、工作频率、产品体积、成本、功耗等，电路实现采用 ASI">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-09T01:46:14.000Z">
-<meta property="article:modified_time" content="2024-10-09T02:15:42.399Z">
+<meta property="article:modified_time" content="2024-10-09T07:57:59.312Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -155,14 +155,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Verilog-HDL硬件描述语言"><a href="#Verilog-HDL硬件描述语言" class="headerlink" title="Verilog HDL硬件描述语言"></a>Verilog HDL硬件描述语言</h1><ul>
-<li><h2 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h2></li>
-</ul>
-<p>​	专用集成电路（ASIC），就是具有专门用途和特殊功能的独立集成电路器件。Verilog 作为硬件描述语言，主要用来生成专用集成电路。</p>
-<ul>
-<li><h2 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h2></li>
-<li><p><strong>需求分析</strong></p>
-</li>
+        <h1 id="Verilog-HDL硬件描述语言"><a href="#Verilog-HDL硬件描述语言" class="headerlink" title="Verilog HDL硬件描述语言"></a>Verilog HDL硬件描述语言</h1><h2 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h2><p>​	专用集成电路（ASIC），就是具有专门用途和特殊功能的独立集成电路器件。Verilog 作为硬件描述语言，主要用来生成专用集成电路。</p>
+<hr>
+<h2 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h2><ul>
+<li><strong>需求分析</strong></li>
 </ul>
 <p>工作人员需要对用户提出的功能要求进行分析理解，做出电路系统的整体规划，形成详细的技术指标，确定初步方案。例如，要设计一个电子屏，需要考虑供电方式、工作频率、产品体积、成本、功耗等，电路实现采用 ASIC 还是选用 FPGA&#x2F;CPLD 器件等。</p>
 <ul>
@@ -196,6 +192,26 @@
 </ul>
 <p>完成上面所有步骤后，就可以通过开发工具将设计的数字电路目标文件下载到 FPGA&#x2F;CPLD 芯片中，然后在电路板上进行调试、验证。</p>
 <p>如果要在 ASIC 上实现，则需要制造芯片。一般芯片制造时，也需要先在 FPGA 板卡上进行逻辑功能的验证。</p>
+<hr>
+<h2 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h2><ul>
+<li><p>区分“.”和”_”:</p>
+<p>32’h3022_c0de 表示“32bit，16进制，3022CODE”</p>
+</li>
+<li><p>Verilog 将字符串当做一系列的单字节 ASCII 字符队列</p>
+</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">0</span>: <span class="number">14</span>*<span class="number">8</span>-<span class="number">1</span>]       str ;<span class="comment">//14个字符每个8bit</span></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    str = <span class="string">&quot;www.runoob.com&quot;</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">//寄存器变量的宽度大于字符串的大小，则使用 0 来填充左边的空余位；如果寄存器变量的宽度小于字符串大小，则会截去字符串左边多余的数据</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>两大类型：线网（wire）、寄存器（reg）</li>
+<li>除条件操作符从右往左关联，其余操作符都是自左向右关联：</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自右向左关联，两种写法等价</span></span><br><span class="line">A+B-C ;</span><br><span class="line">(A+B）-C ;</span><br><span class="line"></span><br><span class="line"><span class="comment">//自右向左关联，两种写法等价，结果为 B、D 或 F</span></span><br><span class="line">A ? B : C ? D : F ;</span><br><span class="line">A ? B : (C ? D : F) ;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>归约操作符只有一个操作数，它对这个向量操作数逐位进行操作，最终产生一个 1bit 结果</li>
+<li>以反引号 <strong>&#96;</strong> 开始的某些标识符是 Verilog 系统编译指令</li>
+</ul>
 
       
 
@@ -287,16 +303,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-  
-    <a href="/2024/10/09/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
