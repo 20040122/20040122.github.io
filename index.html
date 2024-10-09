@@ -77,11 +77,11 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/20040122" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+					<a class="weixin" target="_blank" href="/assets/wechat.jpg" title="weixin"><i class="icon-weixin"></i></a>
 		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="bilibili" target="_blank" href="https://space.bilibili.com/1014042581?spm_id_from=333.1007.0.0" title="bilibili"><i class="icon-bilibili"></i></a>
 		        
 			</div>
 		</nav>
@@ -116,11 +116,11 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/20040122" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+						<a class="weixin" target="_blank" href="/assets/wechat.jpg" title="weixin"><i class="icon-weixin"></i></a>
 			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="bilibili" target="_blank" href="https://space.bilibili.com/1014042581?spm_id_from=333.1007.0.0" title="bilibili"><i class="icon-bilibili"></i></a>
 			        
 				</div>
 			</nav>
@@ -151,66 +151,27 @@
     <article id="post-Verilog-HDL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/10/09/Verilog-HDL/">Verilog HDL硬件描述语言</a>
+    </h1>
+  
+
+        
+        <a href="/2024/10/09/Verilog-HDL/" class="archive-article-date">
+  	<time datetime="2024-10-09T01:46:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-09</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Verilog-HDL硬件描述语言"><a href="#Verilog-HDL硬件描述语言" class="headerlink" title="Verilog HDL硬件描述语言"></a>Verilog HDL硬件描述语言</h1><h2 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h2><p>​	专用集成电路（ASIC），就是具有专门用途和特殊功能的独立集成电路器件。Verilog 作为硬件描述语言，主要用来生成专用集成电路。</p>
-<hr>
-<h2 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h2><ul>
-<li><strong>需求分析</strong></li>
-</ul>
-<p>工作人员需要对用户提出的功能要求进行分析理解，做出电路系统的整体规划，形成详细的技术指标，确定初步方案。例如，要设计一个电子屏，需要考虑供电方式、工作频率、产品体积、成本、功耗等，电路实现采用 ASIC 还是选用 FPGA&#x2F;CPLD 器件等。</p>
-<ul>
-<li><strong>功能划分</strong></li>
-</ul>
-<p>正确地分析了用户的电路需求后，就可以进行逻辑功能的总体设计，设计整个电路的功能、接口和总体结构，考虑功能模块的划分和设计思路，各子模块的接口和时序（包括接口时序和内部信号的时序）等，向项目组成员合理分配子模块设计任务。</p>
-<ul>
-<li><strong>文本描述</strong></li>
-</ul>
-<p>可以用任意的文本编辑器，也可以用专用的 HDL 编辑环境，对所需求的数字电路进行设计建模，保存为 <strong>.v</strong> 文件。</p>
-<ul>
-<li><strong>功能仿真（前仿真）</strong></li>
-</ul>
-<p>对建模文件进行编译，对模型电路进行功能上的仿真验证，查找设计的错误并修正。</p>
-<p>此时的仿真验证并没有考虑到信号的延迟等一些 timing 因素，只是验证逻辑上的正确性。</p>
-<ul>
-<li><strong>逻辑综合</strong></li>
-</ul>
-<p>综合（synthesize），就是在标准单元库和特定的设计约束的基础上，将设计的高层次描述（Verilog 建模）转换为门级网表的过程。逻辑综合的目的是产生物理电路门级结构，并在逻辑、时序上进行一定程度的优化，寻求逻辑、面积、功耗的平衡，增强电路的可测试性。</p>
-<p>但不是所有的 Verilog 语句都是可以综合成逻辑单元的，例如时延语句。</p>
-<ul>
-<li><strong>布局布线</strong></li>
-</ul>
-<p>根据逻辑综合出的网表与约束文件，利用厂家提供的各种基本标准单元库，对门级电路进行布局布线。至此，已经将 Verilog 设计的数字电路，设计成由标准单元库组成的数字电路。</p>
-<ul>
-<li><strong>时序仿真（后仿真）</strong></li>
-</ul>
-<p>布局布线后，电路模型中已经包含了时延信息。利用在布局布线中获得的精确参数，用仿真软件验证电路的时序。单元器件的不同、布局布线方案都会给电路的时序造成影响，严重时会出现错误。出错后可能就需要重新修改 RTL（寄存器传输级描述，即 Verilog 初版描述），重复后面的步骤。这样的过程可能反复多次，直至错误完全排除。</p>
-<ul>
-<li><strong>FPGA&#x2F;CPLD 下载或 ASIC 制造工艺生产</strong></li>
-</ul>
-<p>完成上面所有步骤后，就可以通过开发工具将设计的数字电路目标文件下载到 FPGA&#x2F;CPLD 芯片中，然后在电路板上进行调试、验证。</p>
-<p>如果要在 ASIC 上实现，则需要制造芯片。一般芯片制造时，也需要先在 FPGA 板卡上进行逻辑功能的验证。</p>
-<hr>
-<h2 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h2><ul>
-<li><p>区分“.”和”_”:</p>
-<p>32’h3022_c0de 表示“32bit，16进制，3022CODE”</p>
-</li>
-<li><p>Verilog 将字符串当做一系列的单字节 ASCII 字符队列</p>
-</li>
-</ul>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> [<span class="number">0</span>: <span class="number">14</span>*<span class="number">8</span>-<span class="number">1</span>]       str ;<span class="comment">//14个字符每个8bit</span></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    str = <span class="string">&quot;www.runoob.com&quot;</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">//寄存器变量的宽度大于字符串的大小，则使用 0 来填充左边的空余位；如果寄存器变量的宽度小于字符串大小，则会截去字符串左边多余的数据</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>两大类型：线网（wire）、寄存器（reg）</li>
-<li>除条件操作符从右往左关联，其余操作符都是自左向右关联：</li>
-</ul>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自右向左关联，两种写法等价</span></span><br><span class="line">A+B-C ;</span><br><span class="line">(A+B）-C ;</span><br><span class="line"></span><br><span class="line"><span class="comment">//自右向左关联，两种写法等价，结果为 B、D 或 F</span></span><br><span class="line">A ? B : C ? D : F ;</span><br><span class="line">A ? B : (C ? D : F) ;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>归约操作符只有一个操作数，它对这个向量操作数逐位进行操作，最终产生一个 1bit 结果</li>
-<li>以反引号 <strong>&#96;</strong> 开始的某些标识符是 Verilog 系统编译指令</li>
-</ul>
-
+        <h1 id="Verilog入门"><a href="#Verilog入门" class="headerlink" title="Verilog入门"></a>Verilog入门
+        
+          <a class="article-more-a" href="/2024/10/09/Verilog-HDL/#more">more >></a>
+        
       
 
       
@@ -223,6 +184,71 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2024/10/09/Verilog-HDL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Qsort" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/10/08/Qsort/">Qsort</a>
+    </h1>
+  
+
+        
+        <a href="/2024/10/08/Qsort/" class="archive-article-date">
+  	<time datetime="2024-10-08T01:46:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="快速排序（交换类排序）的核心思想以及具体代码实现"><a href="#快速排序（交换类排序）的核心思想以及具体代码实现" class="headerlink" title="快速排序（交换类排序）的核心思想以及具体代码实现"></a>快速排序（交换类排序）的核心思想以及具体代码实现
+        
+          <a class="article-more-a" href="/2024/10/08/Qsort/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/10/08/Qsort/">展开全文 >></a>
         </p>
       
 
@@ -394,26 +420,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
             </li>
           
         </ul>
