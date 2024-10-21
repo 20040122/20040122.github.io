@@ -16,7 +16,7 @@
 <meta property="og:description" content="Verilog">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-10-08T04:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-20T01:19:27.045Z">
+<meta property="article:modified_time" content="2024-10-21T06:30:03.514Z">
 <meta property="article:author" content="张长明">
 <meta name="twitter:card" content="summary">
   
@@ -187,11 +187,11 @@
 <ul>
 <li><strong>逻辑综合</strong></li>
 </ul>
-<p>综合（synthesize），就是在标准单元库和特定的设计约束的基础上，将设计的高层次描述（Verilog 建模）转换为门级网表的过程。逻辑综合的目的是产生物理电路门级结构，并在逻辑、时序上进行一定程度的优化，寻求逻辑、面积、功耗的平衡，增强电路的可测试性。但不是所有的 Verilog 语句都是可以综合成逻辑单元的，例如时延语句。</p>
+<p>综合（synthesize），就是在标准单元库和特定的设计约束的基础上，将设计的高层次描述（Verilog 建模）转换为门级网表的过程。逻辑综合的目的是产生物理电路门级结构，并在逻辑、时序上进行一定程度的优化，寻求逻辑、面积、功耗的平衡，增强电路的可测试性。<strong>但不是所有的 Verilog 语句都是可以综合成逻辑单元的，例如时延语句。</strong></p>
 <ul>
 <li><strong>布局布线</strong></li>
 </ul>
-<p>根据逻辑综合出的网表与约束文件，利用厂家提供的各种基本标准单元库，对门级电路进行布局布线。至此，已经将 Verilog 设计的数字电路，设计成由标准单元库组成的数字电路。</p>
+<p>根据逻辑综合出的网表与约束文件，利用厂家提供的各种基本标准单元库，对门级电路进行布局布线。至此，已经将 Verilog 设计的数字电路，设计成由标准单元库组成的数字电路。s</p>
 <ul>
 <li><strong>时序仿真（后仿真）</strong></li>
 </ul>
@@ -202,7 +202,7 @@
 <p>完成上面所有步骤后，就可以通过开发工具将设计的数字电路目标文件下载到 FPGA&#x2F;CPLD 芯片中，然后在电路板上进行调试、验证。如果要在 ASIC 上实现，则需要制造芯片。一般芯片制造时，也需要先在 FPGA 板卡上进行逻辑功能的验证。</p>
 </blockquote>
 <hr>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ul>
+<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ul>
 <li><p>区分“.”和”_”:</p>
 <p>32’h3022_c0de 表示“32bit，16进制，3022CODE”</p>
 </li>
@@ -237,6 +237,16 @@
 <li><p>repeat 的功能是执行固定次数的循环</p>
 </li>
 <li><p>模块内部有可选的 5 部分组成，分别是变量声明，数据流语句，行为级语句，低层模块例化及任务和函数</p>
+</li>
+<li><p>input、inout 类型不能声明为 reg 数据类型，因为 reg 类型是用于保存数值的，而输入端口只能反映与其相连的外部信号的变化;output 可以声明为 wire 或 reg 数据类型</p>
+</li>
+<li><p>端口隐式的声明为 wire 型变量</p>
+</li>
+<li><p>在一个模块中引用另一个模块，对其端口进行相关连接，叫做模块例化</p>
+</li>
+<li><p>用 generate 语句进行多个模块的重复例化，可大大简化程序的编写过程</p>
+</li>
+<li><p>任务和函数的区别：函数一般用于组合逻辑的各种转换和计算，而任务更像一个过程，不仅能完成函数的功能，还可以包含时序控制逻辑</p>
 </li>
 </ul>
 
@@ -298,7 +308,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Verilog"><span class="toc-number">1.</span> <span class="toc-text">Verilog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">语法</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Verilog"><span class="toc-number">1.</span> <span class="toc-text">Verilog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">要点</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
