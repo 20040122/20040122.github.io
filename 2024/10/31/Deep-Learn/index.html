@@ -17,8 +17,13 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241031160953935.png">
 <meta property="og:image" content="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241104145439011.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106124351897.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106161154849.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106161646251.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106162621247.png">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106163500758.png">
 <meta property="article:published_time" content="2024-10-31T07:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-04T11:48:58.370Z">
+<meta property="article:modified_time" content="2024-11-06T09:19:04.304Z">
 <meta property="article:author" content="张长明">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241031160953935.png">
@@ -189,11 +194,19 @@
 <h2 id="Transformer初体验"><a href="#Transformer初体验" class="headerlink" title="Transformer初体验"></a>Transformer初体验</h2><ul>
 <li><strong>核心组件</strong>：编码器-译码器、位置编码、多头注意力机制、前馈网络</li>
 </ul>
-<ol>
-<li>位置编码：为输入序列中的每个元素添加位置信息</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 位置编码的实现</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PositionalEncoding</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, d_model, max_len=<span class="number">5000</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(PositionalEncoding, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="comment">#d_model：表示每个输入元素的维度（特征数），max_len：最大的序列长度，默认为5000</span></span><br><span class="line">        <span class="comment"># 计算位置编码</span></span><br><span class="line">        pe = torch.zeros(max_len, d_model)</span><br><span class="line">        position = torch.arange(<span class="number">0</span>, max_len, dtype=torch.<span class="built_in">float</span>).unsqueeze(<span class="number">1</span>)</span><br><span class="line">        div_term = torch.exp(torch.arange(<span class="number">0</span>, d_model, <span class="number">2</span>).<span class="built_in">float</span>() * (-torch.log(</span><br><span class="line">        torch.tensor(<span class="number">10000.0</span>)) / d_model))</span><br><span class="line">        </span><br><span class="line">        pe[:, <span class="number">0</span>::<span class="number">2</span>] = torch.sin(position * div_term)</span><br><span class="line">        pe[:, <span class="number">1</span>::<span class="number">2</span>] = torch.cos(position * div_term)</span><br><span class="line">        pe = pe.unsqueeze(<span class="number">0</span>)</span><br><span class="line">        <span class="variable language_">self</span>.register_buffer(<span class="string">&#x27;pe&#x27;</span>, pe)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = x + x + <span class="variable language_">self</span>.pe[:, :x.size(<span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例用法</span></span><br><span class="line">d_model = <span class="number">512</span></span><br><span class="line">max_len = <span class="number">100</span></span><br><span class="line">num_heads = <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 位置编码</span></span><br><span class="line">pos_encoder = PositionalEncoding(d_model, max_len)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例输入序列</span></span><br><span class="line">input_sequence = torch.randn(<span class="number">5</span>, max_len, d_model)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 应用位置编码</span></span><br><span class="line">input_sequence = pos_encoder(input_sequence)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;输入序列的位置编码:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(input_sequence.shape)</span><br></pre></td></tr></table></figure>
-
+<p><img src="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106124351897.png" alt="image-20241106124351897"></p>
+<ul>
+<li><strong>Self-Attention:</strong></li>
+</ul>
+<blockquote>
+<p><strong>查询向量q、键向量k、值向量v</strong>、<strong>每个字符对应一个向量a</strong></p>
+<p><img src="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106161154849.png" alt="image-20241106161154849"></p>
+<p><strong>计算Attention-Score</strong></p>
+<p><img src="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106161646251.png" alt="image-20241106161646251"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106162621247.png" alt="image-20241106162621247"></p>
+<p><strong>得到输出</strong><img src="https://gcore.jsdelivr.net/gh/20040122/Image/image-20241106163500758.png" alt="image-20241106163500758"></p>
+</blockquote>
+<p>可以发现未知的参数只有W。</p>
 
       
 
